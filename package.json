@@ -1,0 +1,26 @@
+{
+  "name": "vention-code-challenge",
+  "version": "1.0.0",
+  "description": "Code challenge for Vention.io in August 2021 for Nazin Hossain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node msg_broker.js ; node car_mgr.js ; node app.js ; node browser.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nazin-hossain/VentionCodeChallenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nazin-hossain/VentionCodeChallenge/issues"
+  },
+  "homepage": "https://github.com/nazin-hossain/VentionCodeChallenge#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jest": "^27.0.6",
+    "mosca": "^2.8.3"
+  }
+}

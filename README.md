@@ -1,3 +1,2 @@
-# VentionCodeChallenge
-Code challenge for Vention.io in August 2021
-test update from VS
+# vention-code-challenge
+Code challenge for Vention.io in August 2021 for Nazin Hossain
