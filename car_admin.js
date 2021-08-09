@@ -35,7 +35,22 @@ client.on('message', function (topic, message, packet) {
     for (let i = 0; i <= (config.carAdminConfig.numberOfCars - 1); i++) {
         let location = config.carAdminConfig.carsConfig[i].initialLocation;
         let speed = config.carAdminConfig.carsConfig[i].speed;
-        allCars.push(new Car(i, location, speed, config.carAdminConfig.wallsLocation.left, config.carAdminConfig.wallsLocation.right));
+
+        switch (i) {
+            case 0: // 1st car next to the left wall
+                var minInitialLocation = config.carAdminConfig.wallsLocation.left;
+                var maxInitialLocation = config.carAdminConfig.carsConfig[i+1].initialLocation;
+                break;
+            case (config.carAdminConfig.numberOfCars - 1): // last car before the right wall
+                var minInitialLocation = config.carAdminConfig.carsConfig[i-1].initialLocation;
+                var maxInitialLocation = config.carAdminConfig.wallsLocation.right;
+                break;
+            default: // initial limits are initial locations of neighbors
+                var minInitialLocation = config.carAdminConfig.carsConfig[i-1].initialLocation;
+                var maxInitialLocation = config.carAdminConfig.carsConfig[i+1].initialLocation;
+        }
+
+        allCars.push(new Car(i, location, speed, minInitialLocation, maxInitialLocation, config.carAdminConfig.numberOfCars));
         console.log("created car " + i);
     }
 });
