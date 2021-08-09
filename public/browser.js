@@ -7,4 +7,4 @@ setInterval(() => {
 }, 1000);
 
 
-// 🚙
+// For simplicity use emoji to represent the cars on the screen : 🚙

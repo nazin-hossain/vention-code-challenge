@@ -26,16 +26,16 @@ client.on('error', function (error) {
 client.on('message', function (topic, message, packet) {
     const config = JSON.parse(message);
     console.log("Event occured -> " + topic + " with following data " + message);
-    
 
-    // TODO: destroy previous existing cars first
+    // TODO: reset previous existing cars first for start/stop use case
 
     // Create car objects
-
     const allCars = [];
-    // TODO: should be based on config object received in message
-    for (let i = 1; i <= config.carAdminConfig.numberOfCars; i++) {
-        allCars.push(new Car(i));
+
+    for (let i = 0; i <= (config.carAdminConfig.numberOfCars - 1); i++) {
+        let location = config.carAdminConfig.carsConfig[i].initialLocation;
+        let speed = config.carAdminConfig.carsConfig[i].speed;
+        allCars.push(new Car(i, location, speed, config.carAdminConfig.wallsLocation.left, config.carAdminConfig.wallsLocation.right));
         console.log("created car " + i);
     }
 });

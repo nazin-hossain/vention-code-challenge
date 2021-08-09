@@ -3,32 +3,34 @@ const mqtt = require('mqtt');
 
 console.log("starting app");
 
-// Get Initial car configuration
+// Get configuration for all cars
 const carConfigJSON = require('./car_config.json');
 console.log(carConfigJSON);
 console.log("Number of cars + " + carConfigJSON.carAdminConfig.numberOfCars);
 
 const positions = {}
 
+/*
 setTimeout(function () { // <----- on receive message
   positions.car1 = 2000; // <------ change the psoitons object value to the latest car position
 }, 10000)
-
+*/
 
 // MQTT client behaviour
-// Establish connection to MQTT broker.
+
+// Establish connection to MQTT broker
 var client = mqtt.connect('http://localhost:1883', { clientId: "App" }, { cleanSession: false });
 
-// Publish "car config change" event and subscribe to "car location" event
 client.on('connect', function () {
   console.log('MQTT client App -> connected flag  ' + client.connected);
-  client.publish("car config change", JSON.stringify(carConfigJSON)); //should send the json config object
 
-  // Subscribe to all the car locations 
+  // Publish "car config change" event
+  client.publish("car config change", JSON.stringify(carConfigJSON));
 
+  // Subscribe to "car position" event that will enable App server to get notification
+  // of all car position changes 
   client.subscribe("car position");
-  console.log('MQTT client App subscribed to car position');
-
+  console.log('MQTT client App subscribed to all car position changes');
 })
 
 client.on('error', function (error) {
@@ -36,18 +38,12 @@ client.on('error', function (error) {
   process.exit(1)
 })
 
-// Receiving messages on the topic "car location".
-
+// Receiving messages on car position updates
 client.on('message', function (topic, message, packet) {
     const data = JSON.parse(message);
     console.log("Event occured -> " + topic + " with following data " + message);
 
-    // <------ position = { "car 1": 2000, "car 2": 404553 }
-
     positions["car " + data.identity] = data.position;
-
-    // <------ position = { "car 1": 2000, "car 2": 404553 }
-
 });
 
 // web server
