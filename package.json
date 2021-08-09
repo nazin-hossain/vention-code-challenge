@@ -9,18 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nazin-hossain/VentionCodeChallenge.git"
+    "url": "git+https://github.com/nazin-hossain/vention-code-challenge.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nazin-hossain/VentionCodeChallenge/issues"
+    "url": "https://github.com/nazin-hossain/vention-code-challenge/issues"
   },
-  "homepage": "https://github.com/nazin-hossain/VentionCodeChallenge#readme",
+  "homepage": "https://github.com/nazin-hossain/vention-code-challenge#readme",
   "dependencies": {
+    "aedes": "^0.46.1",
     "express": "^4.17.1",
     "jest": "^27.0.6",
-    "mosca": "^2.8.3"
+    "mqtt": "^4.2.8"
   }
 }
