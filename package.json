@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node msg_broker.js ; node car_mgr.js ; node app.js ; node browser.js"
+    "start:app": "wait-on tcp:1883 && sleep 1 && node app.js",
+    "start:msg_broker": "node msg_broker.js",
+    "start:car_admin": "wait-on tcp:1883 && node car_admin.js",
+    "start": "concurrently npm:start:app npm:start:msg_broker npm:start:car_admin"
   },
   "repository": {
     "type": "git",
@@ -20,8 +23,10 @@
   "homepage": "https://github.com/nazin-hossain/vention-code-challenge#readme",
   "dependencies": {
     "aedes": "^0.46.1",
+    "concurrently": "^6.2.1",
     "express": "^4.17.1",
     "jest": "^27.0.6",
-    "mqtt": "^4.2.8"
+    "mqtt": "^4.2.8",
+    "wait-on": "^6.0.0"
   }
 }

@@ -16,11 +16,11 @@
          },
          {
             "initialLocation": 350,
-            "speed": 1
+            "speed": 15
          },
          {
             "initialLocation": 500,
-            "speed": 3
+            "speed": 7
          },
          {
             "initialLocation": 700,

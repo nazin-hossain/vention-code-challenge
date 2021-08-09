@@ -15,7 +15,7 @@ function Car(id, location, speed, minLocation, maxLocation, numberOfCars) {
 
     var clientIdentity = "car " + id;
     var client = mqtt.connect('http://localhost:1883', { clientId: clientIdentity }, { cleanSession: false });
-    var moveForward = true; // TODO: randomize
+    var moveForward = Math.random() < 0.5; // randomize direction
 
     client.on('connect', function () {
         console.log('MQTT client App -> connected flag  ' + client.connected);
