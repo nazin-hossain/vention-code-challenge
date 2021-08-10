@@ -10,13 +10,13 @@ Code challenge for Vention.io in August 2021 for Nazin Hossain
 3. Install the packages
 
 ```
-$ npm install
+       $ npm install
 ```
 
 2. Launch the application
 
 ```
-$ npm start
+       $ npm start
 ```
 
 ### Configuration
