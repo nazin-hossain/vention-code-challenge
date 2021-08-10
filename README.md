@@ -41,7 +41,7 @@ The implementation decisions taken were based on fulfilling the spirit of the ch
 
 ### Testing Approach
 
-The application was primarily manually tested by checking the console logs displayed at the terminal, generated at all the key moments. The intention has been to provide automated testing using Jest (a Javascript testing framework), which is why the package loads the Jest module, however the current version does not include automated testing.  
+The application was primarily manually tested by checking the console logs displayed at the terminal as well as the web browser, generated at all the key moments. The intention has been to provide automated testing using Jest (a Javascript testing framework), which is why the package loads the Jest module, however the current version does not include automated testing.  
 
 
 
