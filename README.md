@@ -13,7 +13,7 @@ Code challenge for Vention.io in August 2021 for Nazin Hossain
      $ npm install
 ```
 
-2. Launch the application
+4. Launch the application
 
 ```
      $ npm start
