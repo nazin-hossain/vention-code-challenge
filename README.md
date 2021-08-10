@@ -3,16 +3,20 @@ Code challenge for Vention.io in August 2021 for Nazin Hossain
 
 ### Getting started
 
-1. Install the packages
+1. Download this project (clone this git repo) on the local machine
+
+2. If not already installed in the local machine, install Node.js
+
+3. Install the packages
 
 ```
-npm install
+$ npm install
 ```
 
-2. Run the application
+2. Launch the application
 
 ```
-npm start
+$ npm start
 ```
 
 ### Configuration
