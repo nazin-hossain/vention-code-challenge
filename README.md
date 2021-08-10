@@ -3,16 +3,20 @@ Code challenge for Vention.io in August 2021 for Nazin Hossain
 
 ### Getting started
 
-1. Install the packages
+1. Download this project (clone this git repo) on the local machine
+
+2. If not already installed in the local machine, install Node.js
+
+3. Install the packages
 
 ```
-npm install
+     $ npm install
 ```
 
-2. Run the application
+2. Launch the application
 
 ```
-npm start
+     $ npm start
 ```
 
 ### Configuration
@@ -41,7 +45,7 @@ The implementation decisions taken were based on fulfilling the spirit of the ch
 
 ### Testing Approach
 
-The application was primarily manually tested by checking the console logs displayed at the terminal, generated at all the key moments. The intention has been to provide automated testing using Jest (a Javascript testing framework), which is why the package loads the Jest module, however the current version does not include automated testing.  
+The application was primarily manually tested by checking the console logs displayed at the terminal as well as the web browser, generated at all the key moments. The intention has been to provide automated testing using Jest (a Javascript testing framework), which is why the package loads the Jest module, however the current version does not include automated testing.  
 
 
 
