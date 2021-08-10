@@ -2,28 +2,28 @@
    "carAdminConfig": {
       "wallsLocation": {
          "left": 100,
-         "right": 800
+         "right": 700
       },
       "numberOfCars": 5,
       "carsConfig": [
          {
             "initialLocation": 110,
-            "speed": 5
-         },
-         {
-            "initialLocation": 200,
             "speed": 10
          },
          {
-            "initialLocation": 350,
+            "initialLocation": 200,
             "speed": 15
          },
          {
-            "initialLocation": 500,
-            "speed": 7
+            "initialLocation": 350,
+            "speed": 5
          },
          {
-            "initialLocation": 700,
+            "initialLocation": 500,
+            "speed": 17
+         },
+         {
+            "initialLocation": 650,
             "speed": 20
          }
       ]

@@ -1,34 +1,28 @@
 const express = require('express')
 const mqtt = require('mqtt');
 
-console.log("starting app");
+console.log('starting app');
 
-// Get configuration for all cars
+// Get configuration for all cars from car_config.json file
 const carConfigJSON = require('./car_config.json');
 console.log(carConfigJSON);
-console.log("Number of cars + " + carConfigJSON.carAdminConfig.numberOfCars);
+console.log('Number of cars + ' + carConfigJSON.carAdminConfig.numberOfCars);
 
-const positions = {}
-
-/*
-setTimeout(function () { // <----- on receive message
-  positions.car1 = 2000; // <------ change the psoitons object value to the latest car position
-}, 10000)
-*/
+const positions = {} 
 
 // MQTT client behaviour
 
 // Establish connection to MQTT broker
-var client = mqtt.connect('http://localhost:1883', { clientId: "App" }, { cleanSession: false });
+var client = mqtt.connect('http://localhost:1883', { clientId: 'App' }, { cleanSession: false });
 
 client.on('connect', function () {
   console.log('MQTT client App -> connected flag  ' + client.connected);
 
-  // Publish "car config change" event
+  // Publish "car config change" MQTT event
   client.publish("car config change", JSON.stringify(carConfigJSON));
 
-  // Subscribe to "car position" event that will enable App server to get notification
-  // of all car position changes 
+  // Subscribe to "car position" MQTT event broadcast by every car. This enables App server 
+  // to get notification of all car position changes 
   client.subscribe("car position");
   console.log('MQTT client App subscribed to all car position changes');
 })
@@ -41,12 +35,13 @@ client.on('error', function (error) {
 // Receiving messages on car position updates
 client.on('message', function (topic, message, packet) {
     const data = JSON.parse(message);
-    console.log("Event occured -> " + topic + " with following data " + message);
+    console.log('Event occured -> ' + topic + ' with following data ' + message);
 
-    positions["car " + data.identity] = data.position;
+    // collecting car positions to be sent to the web browser
+    positions['car ' + data.identity] = data.position;
 });
 
-// web server
+// App NodeJS as the web server
 
 const app = express()
 const port = 3000
@@ -65,16 +60,11 @@ app.get('/', (req, res) => {
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="browser.js"></script>
       <style>
-        body { color: blue; }
-        #test {
-          position: absolute;
-          top: 10px;
-          left: 100px;
-        }
+
       </style>
     </head>
     <body>
-      
+
     </body>
   </html>`)
 })

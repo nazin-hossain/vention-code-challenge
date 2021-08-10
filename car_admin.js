@@ -7,8 +7,8 @@ console.log('starting car administrator');
 const mqtt = require('mqtt');
 var client = mqtt.connect('http://localhost:1883', { clientId: "car_manager" });
 
-// The car_admin listens to the car config change event.
-var topic = "car config change";
+// The car_admin listens to the car config change event
+var topic = 'car config change';
 
 client.on('connect', function () {
     console.log('MQTT client car manager -> connected flag  ' + client.connected);
@@ -22,7 +22,7 @@ client.on('error', function (error) {
 })
 
 // Receiving messages on the topic "car config change". When this event occurs, it creates the car objects
-// and passes on the configuration upon the car config change event.
+// and passes on the configurable attributes relevant to the car
 client.on('message', function (topic, message, packet) {
     const config = JSON.parse(message);
     console.log("Event occured -> " + topic + " with following data " + message);
@@ -38,19 +38,19 @@ client.on('message', function (topic, message, packet) {
 
         switch (i) {
             case 0: // 1st car next to the left wall
-                var minInitialLocation = config.carAdminConfig.wallsLocation.left;
-                var maxInitialLocation = config.carAdminConfig.carsConfig[i+1].initialLocation;
+                var leftInitialLimit = config.carAdminConfig.wallsLocation.left;
+                var rightInitialLimit = config.carAdminConfig.carsConfig[i+1].initialLocation;
                 break;
             case (config.carAdminConfig.numberOfCars - 1): // last car before the right wall
-                var minInitialLocation = config.carAdminConfig.carsConfig[i-1].initialLocation;
-                var maxInitialLocation = config.carAdminConfig.wallsLocation.right;
+                var leftInitialLimit = config.carAdminConfig.carsConfig[i-1].initialLocation;
+                var rightInitialLimit = config.carAdminConfig.wallsLocation.right;
                 break;
             default: // initial limits are initial locations of neighbors
-                var minInitialLocation = config.carAdminConfig.carsConfig[i-1].initialLocation;
-                var maxInitialLocation = config.carAdminConfig.carsConfig[i+1].initialLocation;
+                var leftInitialLimit = config.carAdminConfig.carsConfig[i-1].initialLocation;
+                var rightInitialLimit = config.carAdminConfig.carsConfig[i+1].initialLocation;
         }
 
-        allCars.push(new Car(i, location, speed, minInitialLocation, maxInitialLocation, config.carAdminConfig.numberOfCars));
+        allCars.push(new Car(i, location, speed, leftInitialLimit, rightInitialLimit, config.carAdminConfig.numberOfCars));
         console.log("created car " + i);
     }
 });
