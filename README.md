@@ -27,7 +27,7 @@ In this very basic version, to change the configurable start locations and speed
 
 In this project, simplistic autonomous car objects (in NodeJS env) move along a 1D axis (towards left or right) at configurable speeds (in pixels per second). While running, each car process broadcasts its position an inter-process communication channel, implemented using MQTT (with a private MQTT message broker running in the localhost).
 
-Each of the car instances, run in its own NodeJS process, each configured to start at a distinct position, with a distinct speed (the given speed has randomized orientation: left or right).  During configuration, each car instance knows who its immediate neighbors are.  When a car bumps into one of its neighbours, or into a virtual wall at either end of the runway, it automatically changes direction. Note that he initial ordering of cars always remain the same.
+Each of the car instances, run in its own NodeJS process, each configured to start at a distinct position, with a distinct speed and randomized direction: towards left or towards right.  During configuration, each car instance knows who its immediate neighbors are.  When a car bumps into one of its neighbours, or into a virtual wall at either end of the runway, it automatically changes direction. Note that he initial ordering of cars always remain the same.
  
 In the back-end, there is one NodeJS server, App.js that collects all car advertisements, and displays the five cars continuously in a very simple UI. This is implemented as a web stack by the App.js nodejs server that is handling all the connections with cars, and providing data access routes (via API created using Express) to the UI on a browser running in http://localhost:3000/.
 
