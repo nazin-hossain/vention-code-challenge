@@ -39,9 +39,9 @@ The implementation decisions taken were based on fulfilling the spirit of the ch
 
 ![Vention take home coding challenge - Google Docs](https://user-images.githubusercontent.com/48063785/128825950-f4a7a934-c3f2-44b0-81e2-6a2255cb6d0a.jpeg)
 
-- NodeJS: One of the key aspects of this challenge is to get a feel for implementation aspects of distributed agents (i.e. the simple "cars") constantly moving and communicating to each other and to a central server, simple dynamically changing data. The choice of the back-end server was NodeJS, since it's ideal for handling real time applications and heavy data flow, specially when it requires minimal cpu processing for each event. Note that the "car" agent software was also built on NodeJS for consistency, and a lack of a relevant reason to choose an alternative (for the purpose of this exercise).
+- NodeJS: One of the key aspects of this challenge is to get a feel for implementation aspects of distributed agents (i.e. the simple "cars") constantly moving and communicating with each other and to a central server, simple dynamically changing data. The choice of the back-end server was NodeJS, since it's ideal for handling real time applications and heavy data flow, specially when it requires minimal cpu processing for each event. Note that the "car" agent software was also built on NodeJS for consistency, and a lack of a relevant reason to choose an alternative (for the purpose of this exercise).
 - MQTT: Chosen as the messaging protocol since it would likely be the ideal lightweight protocol choice in a real world IoT scenario. Since this project needed a very simple private MQTT server that can be run on the local host, Aedes was chosen to implement the MQTT broker.
-- ExpressJS was used as the web application framework for ease of use. The basic UI requirement was very bare and simplistic for the scope of the challenge, and was implemented with barebone HTML, with the browser using an API end point created by ExpressJS.
+- ExpressJS was used as the web application framework for ease of use. The basic UI requirement was very bare and simplistic for the scope of the challenge, and was implemented with barebone HTML, with the browser using an API end point provided by App.js (created using ExpressJS).
 
 ### Testing Approach
 
