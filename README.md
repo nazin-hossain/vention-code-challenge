@@ -35,7 +35,7 @@ In the back-end, there is one NodeJS server, App.js that collects all car advert
 ![VentionCodeChallenge - Architecture](https://user-images.githubusercontent.com/48063785/128818756-ce15604e-3830-4b9d-b593-ef6d2eaf1cc6.jpeg)
 ### About Implementation Decisions
 
-The implementation decisions taken were based on fulfilling the spirit of the challenge requirements while taking short cuts in the interest of time on certain things that may not be as important to demonstrate in the challenge. This section highlights some of the implement decisions and the rationale.
+The implementation decisions taken were based on fulfilling the spirit of the challenge requirements while taking short cuts in the interest of time on certain things that may not be as important to demonstrate in the challenge. This section highlights some of the implementation decisions and the rationale.
 
 ![Vention take home coding challenge - Google Docs](https://user-images.githubusercontent.com/48063785/128825950-f4a7a934-c3f2-44b0-81e2-6a2255cb6d0a.jpeg)
 
